@@ -1,4 +1,5 @@
 export const corsOptions = {
+  origin: "https://blog-app-mern.koyeb.app/",
   credentials: true,
 };
 

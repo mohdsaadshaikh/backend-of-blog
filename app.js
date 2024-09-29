@@ -8,6 +8,7 @@ import helmet from "helmet";
 import xss from "xss-clean";
 // import hpp from 'hpp';
 import compression from "compression";
+import path from "path";
 
 import globalErrorHandler from "./src/middlewares/erorrHandler.js";
 import authRouter from "./src/routes/auth.routes.js";
@@ -52,6 +53,14 @@ app.use(xss());
 // );
 
 app.use(compression());
+
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+});
 
 app.use("/api/v1/blogs", blogRouter);
 app.use("/api/v1/auth", authRouter);
