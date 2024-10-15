@@ -48,7 +48,7 @@ const protect = TryCatch(async (req, res, next) => {
 
 // optional brotect for getting view from user if its logged in
 const optionalProtect = TryCatch(async (req, res, next) => {
-  let token = req.cookies.Token;
+  let token = req.cookies.["Token"];
 
   // if (
   //   req.headers.authorization &&
