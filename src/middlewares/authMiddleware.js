@@ -13,7 +13,7 @@ const protect = TryCatch(async (req, res, next) => {
   //   token = req.headers.authorization.split(" ")[1];
   // } else if (req.cookies.token) {
   // }
-  token = req.cookies["Token"];
+  token = req.cookies.token;
   console.log(token)
 
   if (!token) {
