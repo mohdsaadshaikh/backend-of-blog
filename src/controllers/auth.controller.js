@@ -147,7 +147,11 @@ const login = TryCatch(async (req, res, next) => {
 });
 
 const logout = TryCatch(async (req, res, next) => {
-  res.clearCookie("Token").json({
+  res.clearCookie("Token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "none",
+  }).json({
     status: "success",
     message: "Logged Out Succesfully",
   });
